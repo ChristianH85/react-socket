@@ -2,13 +2,13 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const axios = require('axios');
- 
+const path =require("path") 
 const port = process.env.Port||4001;
 const index = require('./routes/index');
 
 const app = express()
 app.use(index);
-
+app.use(express.static('client/build'))
 const server = http.createServer(app);
 
 const io = socketIo(server);
